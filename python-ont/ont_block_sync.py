@@ -9,7 +9,7 @@ from ontology.common.address import Address
 from ontology.utils import util
 
 
-class OntTest:
+class OntBlockSync:
 
     def __init__(self):
         rpc_address = 'http://polaris1.ont.io:20336'
@@ -253,7 +253,7 @@ class OntTest:
                 continue
 
             if self.hex_to_str(sm['states'][0]) == 'transfer':
-                # TODO:需要进行转换
+                # 需要进行转换
                 timestamp = sm['timestamp']
                 from_addr = sm['states'][1]
                 to_addr = sm['states'][2]
@@ -282,16 +282,6 @@ class OntTest:
 
 
 if __name__ == '__main__':
-    ontt = OntTest()
-    # ontt.get_block_by_height(430907)
 
-    # ontt.get_sm_evt_by_height(430907)
-    # ontt.get_sm_evt_by_hash('6feb0c28018e8789743f4ba84767e9dad02347439c9a6bbb8e0feb3e9a729fa0')
-    # ontt.get_sm_evt_by_height(430914)
-
-    # ontt.get_block_by_height(430907)
-
-    # print( bytes.fromhex('656e64526f756e64').decode('utf-8') == 'endRound' )
-    ontt.sync_block_loop_forever()
-
-    # ontt.query_oep4_detail('9d70f2d7fd2a2318c611ae8feb4f7bf067ba680e')  # HA token
+    ont_sync = OntBlockSync()
+    ont_sync.sync_block_loop_forever()
